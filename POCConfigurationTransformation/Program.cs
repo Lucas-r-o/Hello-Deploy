@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 
 namespace POCConfigurationTransformation
 {
@@ -10,6 +7,9 @@ namespace POCConfigurationTransformation
     {
         static void Main(string[] args)
         {
+            var value = ConfigurationManager.AppSettings["teste"];
+            Console.WriteLine(value);
+            Console.ReadLine();
         }
     }
 }
