@@ -69,7 +69,7 @@ jobs:
       uses: NuGet/setup-nuget@v1.2.0
 
     - name: 'Nuget Restore Packages'
-      run: nuget restore "HelloClickOnce.sln"
+      run: nuget restore "HelloDeploy.sln"
 
     - name: "Build"
       run: msbuild ${{ env.CSPROJ_PATH }} /t:build /p:Configuration=${{ env.BUILD_CONFIGURATION }} /p:Platform=${{ env.BUILD_PLATFORM }}
