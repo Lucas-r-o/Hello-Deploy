@@ -52,7 +52,7 @@ env:
       CSPROJ_PATH: 'HelloDeploy\HelloDeploy.csproj'
       PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\HelloDeploy\bin\Release\app.publish
       HELLO_ARTIFACT_NAME: 'HelloDeploy'
-      VERSION: '1.0.0.6'
+      VERSION: '1.0.0.0'
 jobs:
 
   build-and-publish:
@@ -80,5 +80,5 @@ jobs:
     - name: "Upload Artifact"
       uses: actions/upload-artifact@v4.3.0
       with:
-        name: ${{ env.CLICKONCE_ARTIFACT_NAME }}
+        name: ${{ env.HELLO_ARTIFACT_NAME }}
         path: ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
