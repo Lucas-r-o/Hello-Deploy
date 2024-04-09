@@ -52,7 +52,7 @@ env:
   CSPROJ_PATH: 'HelloDeploy\HelloDeploy.csproj'
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\HelloDeploy\bin\Release\app.publish
   HELLO_ARTIFACT_NAME: 'HelloDeploy'
-  LOCAL_DIR: 'HelloDeploy/'
+  LOCAL_DIR: '${{ github.workspace }}\HelloDeploy\bin\Release\app.publish\*.*'
   REMOTE_DIR: ''
   VERSION: '1.0.0.0'
       
