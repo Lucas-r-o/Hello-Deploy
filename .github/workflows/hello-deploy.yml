@@ -95,5 +95,5 @@ jobs:
            choco install winscp -y
       - name: "Upload Files"
         run: |
-           winscp.com /command "open ftps://${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWD }}@${{ secrets.FTP_HOSTNAME }}" "option batch on" "option confirm off" "put env.LOCAL_DIR env.REMOTE_DIR" "exit"
+           winscp.com /command "open ftps://${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWD }}@${{ secrets.FTP_HOSTNAME }}" "option batch on" "option confirm off" "put ${{ env.LOCAL_DIR }} ${{ env.REMOTE_DIR }}" "exit"
         shell: cmd 
