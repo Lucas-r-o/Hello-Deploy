@@ -51,7 +51,7 @@ env:
   BUILD_PLATFORM: 'AnyCPU'
   CSPROJ_PATH: 'HelloDeploy\HelloDeploy.csproj'
   HELLO_ARTIFACT_NAME: 'HelloDeploy'
-  LOCAL_DIR: '${{ github.workspace }}\HelloDeploy\bin\Release\app.publish\'
+  LOCAL_DIR: '${{ github.workspace }}\HelloDeploy\bin\Release\app.publish'
   VERSION: '1.0.0.0'
       
 jobs:
@@ -94,5 +94,5 @@ jobs:
            choco install winscp -y
       - name: "Upload Files"
         run: |
-           winscp.com /command "open ftps://${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWD }}@${{ secrets.FTP_HOSTNAME }}" "option batch on" "option confirm off" "put ${{ env.LOCAL_DIR }}*.*" "exit"
+           winscp.com /command "open ftps://${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWD }}@${{ secrets.FTP_HOSTNAME }}" "option batch on" "option confirm off" "put ${{ env.LOCAL_DIR }}\*" "exit"
         shell: cmd 
