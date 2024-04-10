@@ -87,7 +87,6 @@ jobs:
   deploy-by-ftp:
     name: 'Deploy by FTP'
     runs-on: windows-latest
-    needs: build-and-publish
     steps:
       - name: "Setup WinSCP"
         run: |
