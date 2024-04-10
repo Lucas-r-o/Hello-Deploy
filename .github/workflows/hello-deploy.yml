@@ -76,7 +76,9 @@ jobs:
       run: msbuild ${{ env.CSPROJ_PATH }} /t:build /p:Configuration=${{ env.BUILD_CONFIGURATION }} /p:Platform=${{ env.BUILD_PLATFORM }}
 
     - name: "Publish"
-      run: msbuild ${{ env.CSPROJ_PATH }} ${{ env.CSPROJ_PATH }} --configuration ${{ env.BUILD_CONFIGURATION }} --output ${{ github.workspace }}/publish
+      run: |
+        msbuild ${{ env.CSPROJ_PATH }} /t:publish /p:Configuration="${{ env.BUILD_CONFIGURATION }}" /p:Platform="${{ env.BUILD_PLATFORM }}" /p:ApplicationVersion="${{ env.VERSION }}" /p:MinimumRequiredVersion="${{ env.VERSION }}" /p:VersionAssembly="${{ env.VERSION }}"
+        cp -r ${env.CSPROJ_PATH}/bin/${{ env.BUILD_CONFIGURATION }}/${{ env.BUILD_PLATFORM }}/publish/* ${{ github.workspace }}
 
     - name: "Upload Artifact"
       uses: actions/upload-artifact@v4.3.0
@@ -84,8 +86,15 @@ jobs:
         name: ${{ env.HELLO_ARTIFACT_NAME }}
         path: ${{ env.LOCAL_DIR }}
 
-    - name: "Validar arquivo"
-      run: ls ${{ github.workspace }}
-
-    - name: "Validar arquivo 2"
-      run: ls ${{ github.workspace }}\HelloDeploy\bin\Release\app.publish
+  deploy-by-ftp:
+    name: 'Deploy by FTP'
+    runs-on: windows-latest
+    needs: build-and-publish
+    steps:
+      - name: "Setup WinSCP"
+        run: |
+           choco install winscp -y
+      - name: "Upload Files"
+        run: |
+           winscp.com /command "open ftps://${{ secrets.FTP_USER }}:${{ secrets.FTP_PASSWD }}@${{ secrets.FTP_HOSTNAME }}" "option batch on" "option confirm off" "put D:\a\Hello-Deploy\HelloDeploy\bin\Release\app.publish\*.*" "exit"
+        shell: cmd 
