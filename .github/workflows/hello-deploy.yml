@@ -87,5 +87,5 @@ jobs:
     - name: "Validar arquivo"
       run: ls ${{ github.workspace }}
 
-    - name: "Validar arquivo"
+    - name: "Validar arquivo 2"
       run: ls ${{ github.workspace }}\HelloDeploy\bin\Release\app.publish
