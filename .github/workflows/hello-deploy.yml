@@ -51,7 +51,7 @@ env:
   BUILD_PLATFORM: 'AnyCPU'
   CSPROJ_PATH: 'HelloDeploy\HelloDeploy.csproj'
   HELLO_ARTIFACT_NAME: 'HelloDeploy' 
-  LOCAL_DIR: ${{ github.workspace }}/
+  LOCAL_DIR: ${{ github.workspace }}/HelloDeploy/bin/Release/app.publish/
   SERVER_DIR: '/site/wwwroot/hello-deploy/'
   VERSION: '1.0.0.10'
       
@@ -85,9 +85,6 @@ jobs:
       with:
         name: ${{ env.HELLO_ARTIFACT_NAME }}
         path: ${{ env.LOCAL_DIR }}
-
-    - name: Print Workspace Path
-      run: echo "${{ github.workspace }}"
 
   deploy-by-ftp:
     name: Deploy by FTP
