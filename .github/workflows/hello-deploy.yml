@@ -52,7 +52,7 @@ env:
   CSPROJ_PATH: 'HelloDeploy\HelloDeploy.csproj'
   HELLO_ARTIFACT_NAME: 'HelloDeploy' 
   LOCAL_DIR: '${{ github.workspace }}\HelloDeploy\bin\Release\app.publish'
-  SERVER_DIR: 'site/wwwroot/hello-deploy'
+  SERVER_DIR: 'site/wwwroot/hello-deploy/'
   VERSION: '1.0.0.10'
       
 jobs:
