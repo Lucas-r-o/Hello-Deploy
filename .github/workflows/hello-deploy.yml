@@ -45,7 +45,7 @@ jobs:
       uses: actions/upload-artifact@v4.3.0
       with:
         name: ${{ env.HELLO_ARTIFACT_NAME }}
-        path: ${{ github.workspace }}/HelloDeploy/bin/Release/app.publish/
+        path: ${{ github.workspace }}/HelloDeploy/bin/Release/app.publish/testeLucas.txt
 
   deploy-by-ftp:
     name: Deploy by FTP
