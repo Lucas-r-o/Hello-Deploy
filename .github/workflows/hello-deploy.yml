@@ -9,12 +9,12 @@ on:
   workflow_dispatch: # Allow you to run this workflow manually from the Action tab
   
 env:
-  BUILD_CONFIGURATION: 'Release'
-  BUILD_PLATFORM: 'AnyCPU'
-  CSPROJ_PATH: 'HelloDeploy\HelloDeploy.csproj'
-  HELLO_ARTIFACT_NAME: 'HelloDeploy' 
+  BUILD_CONFIGURATION: Release
+  BUILD_PLATFORM: AnyCPU
+  CSPROJ_PATH: HelloDeploy\HelloDeploy.csproj
+  HELLO_ARTIFACT_NAME: HelloDeploy
   LOCAL_DIR: ${{ github.workspace }}/
-  SERVER_DIR: '/site/wwwroot/hello-deploy/'
+  SERVER_DIR: /site/wwwroot/hello-deploy/
   VERSION: '1.0.0.10'
       
 jobs:
@@ -41,6 +41,7 @@ jobs:
     - name: "Publish"
       run: |
         msbuild ${{ env.CSPROJ_PATH }} /t:publish /p:Configuration="${{ env.BUILD_CONFIGURATION }}" /p:Platform="${{ env.BUILD_PLATFORM }}" /p:ApplicationVersion="${{ env.VERSION }}" /p:MinimumRequiredVersion="${{ env.VERSION }}" /p:VersionAssembly="${{ env.VERSION }}"
+    
     - name: "Upload Artifact"
       uses: actions/upload-artifact@v4.3.0
       with:
