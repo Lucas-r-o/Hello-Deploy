@@ -15,7 +15,7 @@ namespace HelloDeploy
             {
                 var currentDeployment = ApplicationDeployment.CurrentDeployment;
                 Console.WriteLine($"Versão: {currentDeployment.CurrentVersion}");
-            }
+            } 
 
             Console.WriteLine("Pressione uma tecla para Finalizar >>>");
             Console.ReadKey();
