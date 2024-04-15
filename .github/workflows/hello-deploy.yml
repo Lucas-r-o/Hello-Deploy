@@ -86,6 +86,9 @@ jobs:
         name: ${{ env.HELLO_ARTIFACT_NAME }}
         path: ${{ env.LOCAL_DIR }}
 
+    - name: Print Workspace Path
+      run: echo "${{ github.workspace }}"
+
   deploy-by-ftp:
     name: Deploy by FTP
     runs-on: windows-latest
