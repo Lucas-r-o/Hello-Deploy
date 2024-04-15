@@ -49,7 +49,7 @@ on:
 env:
   BUILD_CONFIGURATION: 'Release'
   BUILD_PLATFORM: 'AnyCPU'
-  CSPROJ_PATH: 'HelloDeploy\HelloDeploy.csproj'
+  CSPROJ_PATH: 'Hello-Deploy\HelloDeploy\HelloDeploy.csproj'
   HELLO_ARTIFACT_NAME: 'HelloDeploy' 
   LOCAL_DIR: ${{ github.workspace }}/
   SERVER_DIR: '/site/wwwroot/hello-deploy/'
